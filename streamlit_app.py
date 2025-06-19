@@ -14,6 +14,7 @@ menu = st.sidebar.radio("📚 Menu", [
     "🎯 Objectifs",
     "🧪 Méthodologie",
     "📊 Résultats",
+    "🤖 Prédiction IA",
     "🧩 Conclusion"
 ])
 
@@ -97,7 +98,7 @@ def prediction():
 
     st.metric(label="Consommation énergétique estimée (Watts)", value=f"{predicted_power:.2f}")
 
-    
+
 # Affichage basé sur le menu sélectionné
 if menu == "🏠 Page d'accueil":
     accueil()
