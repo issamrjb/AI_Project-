@@ -76,6 +76,28 @@ def conclusion():
     """)
     st.download_button("📄 Télécharger le rapport (PDF)", data="Rapport à venir...", file_name="rapport_PUE.pdf")
 
+def prediction():
+    st.header("🤖 Prédiction de la Consommation Énergétique")
+
+    # Inputs utilisateur
+    n_vms = st.slider("Nombre de VMs actives", 0, 150, 30)
+    cpu_used = st.slider("CPU utilisée (GHz)", 0.0, 64.0, 20.0)
+    ram_used = st.slider("RAM utilisée (Go)", 0.0, 256.0, 80.0)
+    cpu_capacity = st.selectbox("Capacité totale CPU", [32, 64])
+    ram_capacity = st.selectbox("Capacité totale RAM", [128, 256])
+
+    # Charger modèle
+    import joblib
+    import numpy as np
+    model = joblib.load("ml/model.pkl")
+
+    # Prediction
+    input_data = np.array([[n_vms, cpu_used, ram_used, cpu_capacity, ram_capacity]])
+    predicted_power = model.predict(input_data)[0]
+
+    st.metric(label="Consommation énergétique estimée (Watts)", value=f"{predicted_power:.2f}")
+
+    
 # Affichage basé sur le menu sélectionné
 if menu == "🏠 Page d'accueil":
     accueil()
@@ -89,3 +111,5 @@ elif menu == "📊 Résultats":
     resultats()
 elif menu == "🧩 Conclusion":
     conclusion()
+elif menu == "🤖 Prédiction IA":
+    prediction()
