@@ -179,7 +179,7 @@ elif menu == "🧠 Simulation IA":
 
     if submitted:
         # Chargement du modèle
-        model = joblib.load("ml\LinearRegression_model.pkl")
+        model = joblib.load("ml/LinearRegression_model.pkl")
         input_data = np.array([[n_vms, cpu_used, ram_used, cpu_capacity, ram_capacity]])
         predicted_power = model.predict(input_data)[0]
 
