@@ -35,7 +35,6 @@ menu = st.sidebar.radio("📚 Menu", [
 
 # Routage
 if menu == "🏠 Accueil":
-    st.header("🏠 Page d'accueil")
     load_html_page("html/accueil.html")
 
 elif menu == "📌 Introduction":
@@ -216,8 +215,11 @@ elif menu == "✅ Conclusion":
 
 
 
-    ### 🌱 Vers un Green Data Center intelligent
 
-    En conclusion, l’IA représente un levier majeur pour construire des **data centers plus durables et autonomes**, en combinant prédiction, optimisation et décision intelligente.
 
     """, unsafe_allow_html=True)
+
+    st.markdown(
+        "<h3 style='text-align: center;'>🌱 Vers un Green Data Center plus durables et autonomes</h3>",
+        unsafe_allow_html=True
+    )
